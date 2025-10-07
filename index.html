@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css"> 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+    
+
+    <div class="main">
+            <div class="firstDiv">
+      <h1 id="newPass"></h1>
+      <i class="fa-solid fa-copy" id="copy-btn"></i>
+            </div>
+     <div class="secondDiv">
+         <input type="range" name="" id="range" min="6" max="20" value="10">
+           <label for="rangeValue">Password length</label>echo "# Password-Generator" >> README.md
+git init
+git add README.md
+git commit -m "first commit"
+git branch -M main
+git remote add origin https://github.com/VISHAL1028/Password-Generator.git
+git push -u origin main
+          <p id="rangeValue"></p>
+        
+     </div>
+        
+      <div class="thirdDiv">
+        <input type="checkbox" name="capLet" id="capLet">
+        <label for="capLet">Upper Case</label>
+                 <br>
+         <input type="checkbox" name="small" id="small">
+        <label for="small">Lowercase</label>
+                <br>
+         <input type="checkbox" name="number" id="number">
+        <label for="number">Number</label>
+                <br>
+         <input type="checkbox" name="symbol" id="symbol">
+        <label for="symbol">Symbol</label>
+      </div>
+         
+      <button id="btn">Generate Password</button>
+
+
+
+    </div>
+<script src="index.js"></script>
+</body>
+</html>

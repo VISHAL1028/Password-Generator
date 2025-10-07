@@ -1,50 +1,223 @@
-*{
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
+/* ==== Advanced Password Generator UI by Vishal Maurya ==== */
+
+/* Global variables for theme */
+:root {
+  --bg: #0d1117;
+  --card-bg: rgba(22, 27, 34, 0.8);
+  --accent: #3b82f6;
+  --accent-glow: #60a5fa;
+  --text: #e5e7eb;
+  --muted: #9ca3af;
+  --success: #10b981;
+  --radius: 16px;
+  --transition: 0.3s ease;
+  --shadow: 0 0 20px rgba(59, 130, 246, 0.25);
+  --glass: rgba(255, 255, 255, 0.08);
 }
 
-body{
-    height: 100vh;
-    width: 100vw;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: #ffff;
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Inter', sans-serif;
 }
 
-.main{
-    height: 70%;
-    width: 50%;
-    background-color: azure;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    gap: 30px;
-    border-radius: 20px;
-    align-items: flex-start;
-    border-radius: 20px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    
- 
-}
-#newPass{
-    padding: 30px,20px;
-    border-radius:20px;
-    border: 2px solid #d40404
-    
-    
-}
-.firstDiv{
-    display: flex;
-    gap: 50px 
-
+body {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: radial-gradient(circle at top left, #111827, #0d1117);
+  color: var(--text);
 }
 
-#copy-bt{
-
-    
+/* ===== MAIN CARD ===== */
+.main {
+  background: var(--card-bg);
+  backdrop-filter: blur(14px);
+  border-radius: var(--radius);
+  box-shadow: 0 4px 25px rgba(0, 0, 0, 0.5);
+  padding: 2rem 2.5rem;
+  width: 380px;
+  animation: fadeIn 0.6s ease forwards;
+  border: 1px solid var(--glass);
 }
+
+/* ===== FIRST DIV (Output + Copy) ===== */
+.firstDiv {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #0a0e13;
+  padding: 1rem 1.2rem;
+  border-radius: var(--radius);
+  border: 2px solid var(--accent);
+  box-shadow: var(--shadow);
+  transition: var(--transition);
+}
+
+.firstDiv:hover {
+  box-shadow: 0 0 18px var(--accent-glow);
+}
+
+#newPass {
+  font-size: 1.1rem;
+  word-wrap: break-word;
+  max-width: 250px;
+  overflow: hidden;
+  color: var(--text);
+}
+
+#copy-btn {
+  color: var(--accent);
+  font-size: 1.3rem;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+#copy-btn:hover {
+  color: var(--accent-glow);
+  transform: scale(1.2);
+}
+
+/* ===== SECOND DIV (Range) ===== */
+.secondDiv {
+  margin-top: 1.5rem;
+  text-align: center;
+}
+
+.secondDiv label {
+  display: block;
+  font-size: 0.95rem;
+  color: var(--muted);
+  margin-bottom: 0.3rem;
+}
+
+#range {
+  width: 100%;
+  accent-color: var(--accent);
+  cursor: pointer;
+}
+
+#rangeValue {
+  margin-top: 0.3rem;
+  font-size: 1rem;
+  color: var(--accent);
+  font-weight: 600;
+}
+
+/* ===== THIRD DIV (Checkboxes) ===== */
+.thirdDiv {
+  margin-top: 1.5rem;
+  line-height: 1.8;
+}
+
+.thirdDiv label {
+  margin-left: 0.4rem;
+  font-size: 0.9rem;
+  color: var(--muted);
+}
+
+.thirdDiv input[type="checkbox"] {
+  transform: scale(1.2);
+  accent-color: var(--accent);
+}
+
+/* ===== BUTTON ===== */
+#btn {
+  width: 100%;
+  margin-top: 1.8rem;
+  padding: 0.8rem;
+  border: none;
+  border-radius: var(--radius);
+  background: linear-gradient(135deg, var(--accent), #2563eb);
+  color: white;
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: var(--shadow);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Button hover animation */
+#btn:hover {
+  transform: translateY(-2px);
+  background: linear-gradient(135deg, #60a5fa, var(--accent));
+  box-shadow: 0 0 18px var(--accent-glow);
+}
+
+/* Button active press */
+#btn:active {
+  transform: scale(0.97);
+}
+
+/* ===== Animations ===== */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(25px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ===== Small Glow Pulse for Copy Button ===== */
+@keyframes pulse {
+  0%, 100% {
+    text-shadow: 0 0 8px var(--accent-glow);
+  }
+  50% {
+    text-shadow: 0 0 18px var(--accent-glow);
+  }
+}
+
+/* When copy happens, you can toggle this class dynamically in JS */
+.copied {
+  animation: pulse 0.8s ease;
+  color: var(--success) !important;
+}
+
+
+/* Responsive overrides (loaded after style.css) */
+
+/* Tablet / small desktop: collapse columns and adjust spacing */
+@media (max-width: 1100px) {
+  .main {
+    grid-template-columns: 1fr 260px;
+    padding: 18px;
+  }
+  .controls, .container { gap: 16px }
+}
+
+/* Mobile-first breakpoint: single-column layout */
+@media (max-width: 880px) {
+  .main, .container { grid-template-columns: 1fr !important; }
+  .firstDiv { display:flex; flex-direction:row; align-items:center; gap:10px; padding:12px }
+  .firstDiv h1 { font-size:16px }
+  .secondDiv, .thirdDiv { width:100%; padding:12px }
+  .controls { grid-template-columns: 1fr !important }
+  .right { order: 2 }
+  .left { order: 1 }
+  #btn, .btn { width:100%; padding:14px }
+  #copy-btn { margin-left:8px }
+}
+
+/* Small phones */
+@media (max-width: 420px) {
+  body { padding: 14px }
+  .main, .container { padding: 12px }
+  .firstDiv h1 { font-size:15px }
+  .thirdDiv label, .secondDiv label { font-size:13px }
+  #range { height:28px }
+  .logo { width:40px; height:40px }
+}
+
+/* Ensure copy button and generated block wrap nicely */
+.firstDiv #copy-btn { flex: 0 0 auto }
+.firstDiv h1 { flex: 1 1 auto; min-width: 0 }
